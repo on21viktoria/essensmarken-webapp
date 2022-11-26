@@ -57,7 +57,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        return view('restaurants.show',compact('restaurant'));
     }
 
     /**
@@ -83,7 +83,7 @@ class RestaurantController extends Controller
         $request->validate([
             'name' => 'required|string|max:30',
             'description' => 'nullable|string|max:255',
-            'redeemable_food_vouchers' => 'integer|nullable',
+            'redeemable_food_vouchers' => 'nullable|integer',
             'link' => 'nullable|url',
             'change' => 'required|boolean'
         ]);
@@ -101,14 +101,7 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        //
-    }
-
-    public function write_to_console($data) {
-        $output = $data;
-        if (is_array($output))
-            $output = implode(',', $output);
-    
-        echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+        $restaurant->delete();
+        return redirect()->route('restaurants.index')->with('success','Company has been deleted successfully');
     }
 }

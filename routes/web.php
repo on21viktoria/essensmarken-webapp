@@ -23,7 +23,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/dashboard');
 });
 
 Route::get('/dashboard', function () {
@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('restaurants', RestaurantController::class)
-    ->only(['index', 'store', 'create', 'edit', 'update'])
+    ->only(['index', 'store', 'create', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
     
