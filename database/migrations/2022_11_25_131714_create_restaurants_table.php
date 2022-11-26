@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
-            $table->integer('redeemable_food_vouchers');
-            $table->string('link');
-            $table->boolean('change');
+            $table->text('description')->nullable();
+            $table->integer('redeemable_food_vouchers')->nullable();
+            $table->string('link')->nullable();
+            $table->boolean('change')->default(0);
             $table->timestamps();
         });
     }

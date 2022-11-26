@@ -16,11 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth', 'verified'])->group(function () {
-
-    Route::resource('companies', CompanyController::class);
-
-});
 
 Route::get('/', function () {
     return redirect('/dashboard');
@@ -38,9 +33,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('restaurants', RestaurantController::class)
-    ->only(['index', 'store', 'create', 'edit', 'update', 'destroy'])
+    ->only(['index'])
     ->middleware(['auth', 'verified']);
 
-    
 
+Route::resource('restaurants', RestaurantController::class)
+    ->only(['store', 'create', 'edit', 'update', 'destroy'])
+    ->middleware(['auth', 'verified', 'is_admin']);
+    
 require __DIR__.'/auth.php';

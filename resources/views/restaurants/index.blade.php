@@ -18,6 +18,7 @@
                 <div class="flex">
                     <h5 class="text-gray-900 text-xl font-medium mb-2" style="width: 90%">{{ $restaurant->name }}</h5>
                     <div style="width:10%; justify-content: right">
+                        @if($user->is_admin)
                         <x-dropdown>
                             <x-slot name="trigger">
                                 <button>
@@ -42,15 +43,16 @@
                                 </form>
                             </x-slot>
                         </x-dropdown>
+                        @endif
                     </div>
                 </div>
                 <p class="text-gray-700 text-base mb-4" style="width: 60%">
                     {{ $restaurant->description }}
                 </p>
                 @if($restaurant->change)
-                    <p>Rückgeld beim Einlösen einer Marke erhältlich</p>
+                <p>Rückgeld beim Einlösen einer Marke erhältlich</p>
                 @else
-                    <p>Rückgeld beim Einlösen einer Marke nicht erhältlich</p>
+                <p>Rückgeld beim Einlösen einer Marke nicht erhältlich</p>
                 @endif
                 <p>Max. einlösbare Essensmarken: {{$restaurant->redeemable_food_vouchers}}
             </div>

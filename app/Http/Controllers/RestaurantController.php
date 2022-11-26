@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
@@ -14,8 +15,9 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::orderBy('id', 'desc')->paginate(10);
-        return view('restaurants.index', compact('restaurants'));
+        $restaurants = Restaurant::orderBy('id', 'desc')->paginate(5);
+        $user  = Auth::user();
+        return view('restaurants.index', compact('restaurants', 'user'));
     }
 
     /**
