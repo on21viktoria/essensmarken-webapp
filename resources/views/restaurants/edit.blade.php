@@ -59,7 +59,7 @@
                             <label class="block text-gray-700 text-sm font-bold mb-2">Max redeemable vouchers</label>
                             <input type="number" name="redeemable_food_vouchers"
                                 class="shadow appearance-none border rounded w-full py-2 p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                placeholder="1" value="{{ $restaurant->redeemable_food_vouchers }}">
+                                value="{{ $restaurant->redeemable_food_vouchers }}">
                             @error('redeemable_food_vouchers')
                             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                             @enderror
