@@ -4,11 +4,13 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight" style="width: 50%">
                 {{ __('Restaurants') }}
             </h2>
+            @if($user->is_admin)
             <div class="flex justify-end" style="width: 50%">
                 <a class="btn btn-success" href="{{ route('restaurants.create') }}"
                     style="background-color:blue; color: white; padding: 5px; border-radius: 5px"> Add new
                     Restaurant</a>
             </div>
+            @endif
         </div>
     </x-slot>
     @foreach ($restaurants as $restaurant)
